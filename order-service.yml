@@ -1,0 +1,29 @@
+spring:
+  datasource:
+    url: 'jdbc:h2:mem:ordersdb;DB_CLOSE_DELAY=-1'
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      platform: h2
+eureka:
+  client:
+    service-url:
+      defaultZone: 'http://discovery-server:8761/eureka/'
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
+  instance:
+    prefer-ip-address: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'health,info'
