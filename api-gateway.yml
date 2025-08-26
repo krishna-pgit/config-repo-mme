@@ -10,6 +10,20 @@ spring:
           uri: 'lb://order-service'
           predicates:
             - Path=/orders/**
+  datasource:
+    url: 'jdbc:h2:mem:ordersdb;DB_CLOSE_DELAY=-1'
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
+      platform: h2
 eureka:
   client:
     service-url:
